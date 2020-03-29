@@ -62,9 +62,60 @@ const Job = ({ json }) => {
         <p>{json.data.text}</p>
         {hashtags()}
         {annotations()}
+        <p>TD:
+
+        </p>
       </div>
     </a>
   );
 };
 
 export default Job;
+
+
+
+  const TEDretweet = ({ json }) => {
+          console.log("TEDRETWEET !!!!!!");
+
+          var twit = require("twit");
+          var Twitter = new twit({
+              consumer_key: process.env.TWITTER_CONSUMER_KEY,
+              consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+              access_token: '21516577-TZ7eXmnKKKZ7jJJ05SZBnuSzR8IWuts0IHvQ3OVnF',
+              access_token_secret: 'vuGgXMnxejYoxjzjjRCOxmsLjLDihYTDp1t8c5n42aaO2',
+              timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
+              strictSSL: true, // optional - requires SSL certificates to be valid.
+          });
+            //!!!ATTTENTION!!!!
+            //Twitter.post('statuses/update', { status: 'Hello World, Of Course!' }, function(err, data, response) {
+            //console.log(data)
+            //});
+            var retweet = function () {
+                var params = {
+                    q: '#Ethiopia, #Addis, #Ababa, #Kazanchis', // Hashtags to search tweets within
+                    result_type: 'recent',
+                    lang: 'en'
+                }
+                Twitter.get('search/tweets', params, function (err, data) {
+                    if (!err) {
+                            var retweetId = data.statuses[0].id_str;
+                            console.log("FOUND RETWEET:" + retweetId);
+                            /*Twitter.post('statuses/retweet/:id', {
+                                id: retweetId
+                            }, function (err, response) {
+                                if (response) {
+                                    console.log('Retweeted!!!');
+                                }
+                                if (err) {
+                                      console.log(err);
+                                    console.log('Problem when retweeting. Possibly already retweeted this tweet!');
+                                }
+                            }); */
+                    }
+                    else {
+                        console.log('Error during tweet search call');
+                    }
+                });
+            };
+            retweet();
+  };

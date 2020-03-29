@@ -9,12 +9,14 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "http": "0.0.0",
     "path": "^0.12.7",
     "request": "^2.88.0",
     "socket.io": "^2.3.0",
+    "twit": "^2.2.11",
     "util": "^0.12.1"
   },
   "devDependencies": {

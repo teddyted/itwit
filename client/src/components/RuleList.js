@@ -116,11 +116,24 @@ const RuleList = () => {
     }
   };
 
+    /*let x = await (async function() {return "hello"})();
+    console.log(x);
+    // or
+    console.log(await (async() => 'hello')());
+    ////Parsing error: Can not use keyword 'await' outside an async function??? */
+    axios.get(rulesURL)
+      .then(response => {
+        console.log("RESPONSE:"+response.data.body);
+      }
+    );
+
   useEffect(() => {
-    (async () => {
+    (async fuction => {
       dispatch({ type: "change_loading_status", payload: true });
 
       const response = await axios.get(rulesURL);
+
+      console.log(rulesURL);
       const { data: payload = [] } = response.data.body;
       dispatch({
         type: "show_rules",

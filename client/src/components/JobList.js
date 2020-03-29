@@ -72,7 +72,7 @@ const JobList = () => {
   const waitingMessage = () => {
     const message = {
       title: "Still working",
-      detail: "Waiting for new jobs to be Tweeted"
+      detail: "Waiting for new ETH tweets..."
     };
 
     if (isWaiting) {

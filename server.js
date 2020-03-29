@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const server = http.createServer(app);
 const io = socketIo(server);
 
-const CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY;
-const CONSUMER_SECRET = process.env.TWITTER_CONSUMER_SECRET;
+const CONSUMER_KEY = process.env.TWITTER_CONSUMER_KEY; //"OC2JZPQT6rVJJo5fAXleHY2Ld"; //
+const CONSUMER_SECRET = process.env.TWITTER_CONSUMER_SECRET; //"JG9vPVa9liLRcU0kERBJlGtkLXMNjpzDixY7dJz19SfdL2g1jy"; //
 
 let timeout = 0;
 
